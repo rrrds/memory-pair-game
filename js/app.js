@@ -1,4 +1,6 @@
 const playfield = document.querySelector('.playfield');
+const modal = document.querySelector('.finish-modal');
+const restartButton = document.querySelector('.finish-modal__button');
 const cardTypes = ['A', 'B', 'C', 'D'];
 const openCards = [];
 const timeoutCloseCards = 1000;
@@ -33,9 +35,19 @@ const getFlipContainer = function(event) {
   return target;
 };
 
+const showModal = function() {
+  playfield.classList.add('playfield--hide');
+  modal.classList.remove('finish-modal--hide');
+};
+
+const hideModal = function() {
+  playfield.classList.remove('playfield--hide');
+  modal.classList.add('finish-modal--hide');
+};
+
 const checkWin = function() {
   if (disabledCardsCount >= cards.length) {
-    setTimeout(startGame, 1000);
+    setTimeout(showModal, 1000);
   }
 };
 
@@ -127,9 +139,10 @@ const startGame = function() {
   clearContainer();
 
   renderCards();
+
+  hideModal();
 };
 
 startGame();
 
-const restartButton = document.querySelector('.finish-modal__button');
 restartButton.addEventListener('click', startGame);
