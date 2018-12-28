@@ -131,5 +131,5 @@ const startGame = function() {
 
 startGame();
 
-const restartButton = document.querySelector('.restart-button');
+const restartButton = document.querySelector('.finish-modal__button');
 restartButton.addEventListener('click', startGame);
