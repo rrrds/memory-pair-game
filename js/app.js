@@ -130,3 +130,6 @@ const startGame = function() {
 };
 
 startGame();
+
+const restartButton = document.querySelector('.restart-button');
+restartButton.addEventListener('click', startGame);
