@@ -25,9 +25,7 @@ const shuffleCards = (cardsArray = []) => {
   return cardsArray;
 };
 
-const getFlipContainer = event => {
-  let { target } = event;
-
+const getFlipContainer = ({ target }) => {
   while (!target.classList.contains('flip-container')) {
     target = target.parentElement;
   }
