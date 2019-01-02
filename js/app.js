@@ -108,19 +108,19 @@ const clearContainer = () => {
 };
 
 const renderCards = () => {
-  const cardsFragment = document.createDocumentFragment();
+  const cardTemplates = [];
+
   cards.forEach((card, idx) => {
-    const cardDiv = document.createElement('div');
-    cardDiv.classList.add('flip-container');
-    cardDiv.setAttribute('data-index', idx);
-    cardDiv.innerHTML = `<div class="flip-container__flipper card">
-      <div class="flip-container__front"></div>
-      <div class="flip-container__back">${card}</div>
-    </div>`;
-    cardsFragment.appendChild(cardDiv);
+    cardTemplates.push(`
+      <div class="flip-container" data-index="${idx}">
+        <div class="flip-container__flipper card">
+          <div class="flip-container__front"></div>
+          <div class="flip-container__back">${card}</div>
+        </div>
+      </div>`);
   });
 
-  playfield.appendChild(cardsFragment);
+  playfield.innerHTML = cardTemplates.join('');
   playfield.addEventListener('click', openCard);
 };
 
